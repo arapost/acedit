@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/GSN.feature_1.0.0.201204161601.jar" id="GSN.feature" version="1.0.0.201204161601">
+      <category name="ACEdit"/>
+   </feature>
+   <category-def name="ACEdit" label="ACEdit"/>
+</site>
