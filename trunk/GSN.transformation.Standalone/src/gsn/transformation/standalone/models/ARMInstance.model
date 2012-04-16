@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ARM:Case xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ARM="ARM">
+  <contains xsi:type="ARM:Claim" identifier="asdasd"/>
+  <contains xsi:type="ARM:Claim" identifier="asdasdas"/>
+  <contains xsi:type="ARM:InformationElement" identifier="qweqwe"/>
+  <contains xsi:type="ARM:ArgumentReasoning" identifier="dasdas" describes="//@contains.4"/>
+  <contains xsi:type="ARM:AssertedInference" identifier="asdasd" source="//@contains.0" target="//@contains.3"/>
+  <contains xsi:type="ARM:AssertedInference" identifier="dasdas" source="//@contains.3" target="//@contains.1"/>
+  <contains xsi:type="ARM:AssertedEvidence" identifier="asdasdas" source="//@contains.1" target="//@contains.2"/>
+</ARM:Case>

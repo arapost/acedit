@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GSN1:Case xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GSN1="GSN1">
+  <contains xsi:type="GSN1:Goal" identifier="asdasd">
+    <childSolvedBy childSpinalelement="//@contains.1"/>
+  </contains>
+  <contains xsi:type="GSN1:Strategy" identifier="dasdas" parentSolvedBy="//@contains.0/@childSolvedBy.0">
+    <childSolvedBy childSpinalelement="//@contains.2"/>
+  </contains>
+  <contains xsi:type="GSN1:Goal" identifier="asdasdas" parentSolvedBy="//@contains.1/@childSolvedBy.0">
+    <childSolvedBy childSpinalelement="//@contains.3"/>
+  </contains>
+  <contains xsi:type="GSN1:Solution" identifier="qweqwe" parentSolvedBy="//@contains.2/@childSolvedBy.0"/>
+</GSN1:Case>

@@ -1,0 +1,78 @@
+@namespace(uri="ARM", prefix="ARM")
+package arm;
+
+class Case {
+  val ModelElement[*] contains;
+}
+
+class ModelElement {
+  attr String identifier;
+  attr String description;
+  attr String content;
+  val TaggedValue[*] isTagged;
+}
+
+class TaggedValue {
+  attr String key;
+  attr String value;
+}
+
+class InformationElement extends ArgumentElement {
+}
+
+class Argument extends ModelElement {
+  val ArgumentElement[*] containsArgumentElement;
+  val ArgumentLink[*] containsArgumentLink;
+  val Argument[*] containsArgument;
+}
+
+class ArgumentElement extends ModelElement {
+}
+
+class ArgumentLink extends ModelElement {
+  ref ModelElement[*] source;
+  ref ModelElement[*] target;
+}
+
+class Annotation extends ArgumentLink {
+}
+
+class AssertedRealationship extends ArgumentLink {
+}
+
+class AssertedInference extends AssertedRealationship {
+}
+
+class AssertedContext extends AssertedRealationship {
+}
+
+class AssertedChallenge extends AssertedRealationship {
+}
+
+class AssertedEvidence extends AssertedRealationship {
+}
+
+class AssertedCounterEvidence extends AssertedRealationship {
+}
+
+class ReasoningElement extends ArgumentElement {
+}
+
+class CitiationElement extends ArgumentElement {
+  ref ArgumentElement refersToArgumentElement;
+  ref Argument refersToArgument;
+}
+
+class Claim extends ReasoningElement {
+  attr boolean assumed;
+  attr boolean toBeSupported;
+}
+
+class EvidenceAssertation extends Claim {
+}
+
+class ArgumentReasoning extends ReasoningElement {
+  ref Argument hasStucture;
+  ref AssertedInference[*] describes;
+}
+

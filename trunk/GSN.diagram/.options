@@ -1,0 +1,7 @@
+# Tracing options for the GSN.diagram plug-in
+
+# Common issues
+GSN.diagram/debug=false
+
+# Visual IDs
+GSN.diagram/debug/visualID=false

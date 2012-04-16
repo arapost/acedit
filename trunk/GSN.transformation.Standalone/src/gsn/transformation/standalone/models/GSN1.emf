@@ -1,0 +1,125 @@
+	@namespace(uri="GSN1", prefix="GSN1")
+	@gmf(foo="bar")
+	package GSN1 ; 
+
+	@gmf.diagram(foo="bar")
+	class Case{
+		val ModelElement [*] contains;
+		attr Boolean autoID = true;
+    }
+
+	abstract class ArgumentElement extends ModelElement {
+		attr ElementVisibility visibility;
+		attr ElementStatus contextualElementStatus;
+		ref ArgumentModule [1] #containsElement isPartOf;
+	}
+	abstract class SpinalElement extends ArgumentElement {
+		ref SolvedBy [1] #childSpinalelement parentSolvedBy;
+	}
+	abstract class DecomposableSpinalElement extends SpinalElement {
+		val SolvedBy [*] #parentSpinalElement childSolvedBy;
+		val InContextOf [*] #contextOfSpinalElement hasContext;
+	}
+	abstract class ContextualElement extends ArgumentElement {
+	}
+
+
+ 	@gmf.link(source="parentSpinalElement", target="childSpinalelement", style="solid", width="1",target.decoration="arrow")
+	class SolvedBy {
+		ref DecomposableSpinalElement [1] #childSolvedBy parentSpinalElement;
+		ref SpinalElement [1] #parentSolvedBy childSpinalelement;
+		attr Integer cardinality; //cannot be set 0 and > 1 if parent goal is SolvedUsingContract
+	}
+	@gmf.link(source="contextOfSpinalElement", target="contextualElement", style="solid", width="1",target.decoration="closedarrow")
+	class InContextOf {
+		ref ContextualElement [1] contextualElement;
+					//context exists in the safety case by default; however it is because of the goal substantiating 
+					//process that is used meaningfully in the safety case; hence it is part of the goal decompositions 
+					//(i.e. local) and not universal. Hence val and not ref. 
+		ref DecomposableSpinalElement [1] #hasContext contextOfSpinalElement;
+	}
+	
+	@gmf.node(label="identifier",figure="rectangle",tool.small.path="C:/Users/Aris/runtime-GSNsimple/GSN_V1/GSN_tooling_icons/Goal.gif")
+	class Goal extends DecomposableSpinalElement  {
+		ref ArgumentModule [1] #hasTopLevel isTopLevelGoalOf;
+		//this assoc. is XOR with spinalElement.isPartOf
+	}
+	@gmf.node(label="identifier")
+	class Strategy extends DecomposableSpinalElement  {
+	
+	}
+	@gmf.node(label="identifier",figure="ellipse")
+	class Solution extends SpinalElement  {
+	
+	}
+	@gmf.node(label="identifier",figure="ellipse")
+	class Context extends ContextualElement {
+	
+	}
+	@gmf.node(label="identifier",figure="ellipse")
+	class Justification extends ContextualElement {
+	
+	}
+	@gmf.node(label="identifier",figure="ellipse")
+	class Assumption extends ContextualElement {
+	}	
+
+	@gmf.node(label="identifier",figure="rectangle")
+	class ArgumentModule extends ModelElement {
+		val ArgumentModule [*] parentModuleOf;
+		ref ArgumentModule [*] associatedWithOther;
+	
+		val Goal [*] #isTopLevelGoalOf hasTopLevel; 
+		ref ArgumentElement [*] #isPartOf containsElement;
+	}
+	
+	
+	class AwayContext extends ContextualElement {
+		ref ArgumentModule [1] icContainedIn;
+		ref Goal [1] pointsTo;
+		
+	}
+	
+	class AwaySolution extends SpinalElement{
+	   ref Solution[1] pointsTo;
+	}
+	
+	class AwayGoal extends SpinalElement {
+		ref Goal [1] pointsTo;
+	
+	
+	}
+	
+	class SolvedUsingContract extends SolvedBy {
+		val Contract [1] #isUsedBy with;
+	}
+	class Contract extends ArgumentModule {
+		ref SolvedUsingContract [1] #with isUsedBy;
+	}
+	class InheritedContext extends ContextualElement {
+		ref ContextualElement [*] inheritsFromParentArguments;
+	} 
+
+	abstract class ModelElement {
+		attr String [1] identifier;
+		@gmf.label(label="description")
+		attr String [1] description;
+		val TaggedValue [*] containsAdditional;
+		
+	}
+	class TaggedValue {
+		attr String [1] key;
+		attr String [1] value;
+	}
+	
+	enum ElementStatus {
+		Undefined;
+		ToBeDeveloped;
+		ToBeInstantiated;
+		ToBeDevelopedAndInstantiated;
+	}
+	enum ElementVisibility {
+		Private=0;
+		Public=1;
+		}
+	
