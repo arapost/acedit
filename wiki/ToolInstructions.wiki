@@ -12,8 +12,8 @@ The [http://www.eclipse.org/downloads/packages/eclipse-modeling-tools/indigosr2 
 
 The update sites you will need to install the plugins are:
 
-* [http://download.eclipse.org/modeling/gmp/gmf-tooling/updates/releases/ GMF tooling]. Installs the Graphical Model Framework tools.
-* [http://download.eclipse.org/epsilon/updates/ Epsilon]. Installs the Epsilon framework.
+* [http://download.eclipse.org/modeling/gmp/gmf-tooling/updates/releases/ GMF tooling]. Installs the Graphical Model Framework tools
+* [http://download.eclipse.org/epsilon/updates/ Epsilon]. Installs the Epsilon framework
 
 ----
 
