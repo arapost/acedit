@@ -2,4 +2,4 @@ This page provides instructions on how to install and test the tool.
 
 = Installation =
 
-#Install Eclipse
+**Install Eclipse*
