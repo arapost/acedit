@@ -8,4 +8,11 @@ The [http://www.eclipse.org/downloads/packages/eclipse-modeling-tools/indigosr2 
 ----
 ==Install the necessary Eclipse plugins==
 
-* 
+The update sites you will need to install the plugins are:
+
+* [http://download.eclipse.org/modeling/gmp/gmf-tooling/updates/releases/ GMF tooling]. Installs the Graphical Model Framework ([http://download.eclipse.org/epsilon/updates/ GMF]) tools.
+* [http://download.eclipse.org/epsilon/updates/ Epsilon]. Installs the [http://www.eclipse.org/epsilon/ Epsilon] framework
+
+==Install the Assurance Case Argument Editor==
+
+The last step is to download the acedit projects into your eclipse workspace. 
