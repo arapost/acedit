@@ -1,5 +1,7 @@
-This page provides instructions on how to install and test the tool.
+This page provides instructions on how to install and test the *acedit*.
 
 = Installation =
 
-*Install Eclipse
+==Install Eclipse==
+
+The [http://www.eclipse.org/downloads/packages/eclipse-modeling-tools/indigosr2 Eclipse Modeling Tools] distribution is recommended, in which the tool was implemented and tested. In addition this version of Eclipse contains some of the prerequisites for the Assurance Case Argument Editor.
