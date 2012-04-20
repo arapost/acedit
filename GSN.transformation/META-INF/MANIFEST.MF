@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Plugin2
+Bundle-SymbolicName: GSN.transformation;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: gsn.transformation.Activator
+Require-Bundle: org.eclipse.gmf.runtime.diagram.ui.properties,
+ org.eclipse.epsilon.eol.engine,
+ org.eclipse.epsilon.emc.emf,
+ org.eclipse.epsilon.etl.engine,
+ org.eclipse.epsilon.erl.engine;bundle-version="0.9.0",
+ ARM.diagram;bundle-version="1.0.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: gsn.transformation,
+ gsn.transformation.core,
+ gsn.transformation.popup.actions

@@ -1,0 +1,139 @@
+context ModelElement {
+
+  constraint HasName {
+
+      check : self.identifier.isDefined()
+
+      message : 'Unnamed ' + self.eClass().name + ' not allowed'
+	  fix{
+			title:'Give an identifier to '+self.eClass.name
+			do{
+			var target := UserInput.prompt('Type an identifier: ');
+			if(target.isDefined){
+				self.identifier:=target;
+			}
+			}
+		}	
+		
+  }
+  constraint HasDescription {
+
+      check : self.description.isDefined()
+
+      message : 'Description of ' + self.eClass().name + ' must be set'
+	  fix{
+			title:'Give an description to '+self.eClass.name
+			do{
+			var target := UserInput.prompt('Type a description: ');
+			if(target.isDefined){
+				self.description:=target;
+			}
+			}
+		}	
+		
+  }
+ 
+  constraint HasUniqueIdentifier{
+  	check: ModelElement.allInstances().forAll(i|i.identifier=self.identifier implies i=self)
+  	message: 'The ' +self.eClass.name+' must have unique identifier'
+  	fix{
+  		title: 'Give unique identifier'
+  		do{
+  			var target:= UserInput.prompt('Give a unique name');
+  			if(target.isDefined){
+  				self.identifier:=target;
+  			}
+  		}
+  	}
+  }
+
+  
+}
+
+
+context ArgumentElement{
+constraint HasPartOf {
+
+      check : self.isPartOf.isDefined()
+
+      message : 'The ' + self.eClass().name + ' must be assigned to a module'
+	  fix{
+			title:'Assign a module to '+self.eClass.name
+			do{
+			var target := UserInput.choose('Select Module: ',
+			Module.allInstances());
+			if(target.isDefined){
+				self.isPartOf:=target;
+			}
+			}
+		}	
+		
+  }
+}
+
+context AwayGoal{
+	
+	constraint correctModuleId{
+		check : self.moduleIdExists(self.moduleIdentifier)
+	    message : 'Does not exist any module with identifier: ' + self.moduleIdentifier + ' '
+		fix{
+			title:'Change the name of the moduleIdentifier'
+			do{
+			var target := UserInput.choose('Select Module: ',
+			Module.allInstances());
+			if(target.isDefined){
+				self.moduleIdentifier:=target.identifier;
+			}
+			}
+		}	
+	}
+	
+}
+
+context AwaySolution{
+	
+	constraint correctModuleId{
+		check : self.moduleIdExists(self.moduleIdentifier)
+	    message : 'Does not exist any module with identifier: ' + self.moduleIdentifier + ' '
+		fix{
+			title:'Change the name of the moduleIdentifier'
+			do{
+			var target := UserInput.choose('Select Module: ',
+			Module.allInstances());
+			if(target.isDefined){
+				self.moduleIdentifier:=target.identifier;
+			}
+			}
+		}	
+	}
+	
+	
+}
+
+context AwayContext{
+	
+	constraint correctModuleId{
+		check : self.moduleIdExists(self.moduleIdentifier)
+	    message : 'Does not exist any module with identifier: ' + self.moduleIdentifier + ' '
+		fix{
+			title:'Change the name of the moduleIdentifier'
+			do{
+			var target := UserInput.choose('Select Module: ',
+			Module.allInstances());
+			if(target.isDefined){
+				self.moduleIdentifier:=target.identifier;
+			}
+			}
+		}	
+	}
+	
+	
+}
+operation ModelElement moduleIdExists(name:String ):Boolean{
+	if(Module.allInstances.exists(f|f.identifier.equals(name))){
+		return true;
+	}
+	else{
+		return false;
+	}
+}

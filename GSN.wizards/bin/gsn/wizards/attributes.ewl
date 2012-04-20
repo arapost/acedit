@@ -1,0 +1,114 @@
+//changes the visibility of the selected element
+wizard visibility {
+
+	guard : self.isKindOf(Goal)or self.isKindOf(Solution) or self.isKindOf(Context)
+
+ 	title : 'change visibility from ' + self.visibility +' to ' + self.returnOppositeVisibility()
+
+ 	do {
+		if(self.visibility==ElementVisibility#Public){
+			self.visibility=ElementVisibility#Private;
+		}
+		else if (self.visibility==ElementVisibility#Private){
+			self.visibility=ElementVisibility#Public;
+		}
+	}
+ }
+ 
+ wizard  tobedeveloped{
+
+ 	guard : self.isKindOf(Goal) or self.isKindOf(Strategy)
+
+ 	title : 'mark ' + self.identifier + ' as ' + self.returnDevelopedStatus()
+
+ 	do {
+		self.toBeDeveloped=not self.toBeDeveloped;
+		
+ 	}
+ }
+ wizard  tobesupportedbycontract{
+
+ 	guard : self.isKindOf(Goal)
+
+ 	title : 'mark ' + self.identifier + ' as ' + self.returnContractStatus()
+
+ 	do {
+		self.toBeSupportedByContract=not self.toBeSupportedByContract;
+		
+ 	}
+ }
+ 
+ wizard  tobeinstantiated{
+
+ 	guard : self.isKindOf(ArgumentElement)
+
+ 	title : 'mark ' + self.identifier + ' as ' + self.returnInstantiatedStatus()
+
+	 do {
+		self.tobeInstantiated=not self.tobeInstantiated;
+ 	}
+ }
+ 
+ wizard optional1{
+ 	guard: self.isKindOf(SolvedBy)
+ 	title : 'change solvedBy multiplicity to Normal'
+
+	 do {
+		self.multiextension=SolvedByMultiplicityExtension#Normal;
+ 	}
+ 	
+ }
+ wizard optional2{
+ 	guard: self.isKindOf(SolvedBy)
+ 	title : 'change solvedBy multiplicity to Optional'
+
+	 do {
+		self.multiextension=SolvedByMultiplicityExtension#Optional;
+ 	}
+ 	
+ }
+  wizard optional3{
+ 	guard: self.isKindOf(SolvedBy)
+ 	title : 'change solvedBy multiplicity to Multi'
+
+	 do {
+		self.multiextension=SolvedByMultiplicityExtension#Multi;
+		
+ 	}
+ 	
+ }
+ operation ModelElement returnOppositeVisibility():ElementVisibility{
+	if(self.visibility==ElementVisibility#Public){
+		return ElementVisibility#Private;
+	}
+	else if (self.visibility==ElementVisibility#Private){
+		return ElementVisibility#Public;
+
+	}
+}
+
+operation ModelElement returnDevelopedStatus():String{
+	if(self.toBeDeveloped){
+		return "developed";
+	}
+	else{
+		return "undeveloped";
+	}
+}
+
+operation ModelElement returnContractStatus():String{
+	if(self.toBeSupportedByContract){
+		return "not supported by contract";
+	}
+	else{
+		return "supported by contract";
+	}
+}
+operation ModelElement returnInstantiatedStatus():String{
+	if(self.tobeinstantiated){
+		return "instantiated";
+	}
+	else{
+		return "uninstatiated";
+	}
+}
