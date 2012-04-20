@@ -21,3 +21,9 @@ The update sites you will need to install the plugins are:
 
 The install the *acedit* tool through eclipse updates using the following update site: 
  * http://acedit.googlecode.com/svn/trunk/GSN.updatesite
+
+=Create your first project=
+
+After you successfully have completed the installation, you must be able to create you first acedit project. Below are presented the steps you must follow in Eclipse:
+
+ # select File->new->project
