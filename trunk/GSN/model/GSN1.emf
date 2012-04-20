@@ -1,0 +1,160 @@
+	@namespace(uri="GSN1", prefix="GSN1")
+	@gmf(foo="bar")
+	package GSN1 ; 
+
+	@gmf.diagram(foo="bar")
+	class Case{
+		val ModelElement [*] contains;
+		attr Boolean autoID = true;
+    }
+
+	abstract class ArgumentElement extends ModelElement {
+		attr Boolean tobeinstantiated=false;
+		ref Module [1] #containsElement isPartOf;
+	}
+	abstract class SolvedByTargetElement {
+	   	ref SolvedBy [*] #childSpinalelement parentSolvedBy; 
+	}
+	abstract class InTheContextOfTargetElement{
+	   
+	}
+	@gmf.link(source="parentSolvedByModular", target="childSolvedByModular", style="solid", width="1",target.decoration="filledclosedarrow",tool.small.path="GSN_tooling_icons/solvedBy.gif"
+	,tool.large.path="GSN_tooling_icons/solvedBy.gif",tool.small.bundle="GSN",tool.large.bundle="GSN")
+	class SolvedByModular{
+		ref Module [1] childSolvedByModular;
+		ref Module [1] #parentSolvedByModular parentSolvedByModuleElement;
+	}
+	@gmf.link(source="hasContext", target="modularContextualElement", style="solid", width="1",target.decoration="closedarrow",tool.small.path="GSN_tooling_icons/inTheContextOf.gif"
+	,tool.large.path="GSN_tooling_icons/inTheContextOf.gif",tool.small.bundle="GSN",tool.large.bundle="GSN")
+	class InContextOfModular{
+		ref Module [1] #hasContext parentInConextOfModuleElement;
+		ref Module [1] modularContextualElement;
+	}
+	
+	abstract class SpinalElement extends ArgumentElement,SolvedByTargetElement {
+	}
+	abstract class DecomposableSpinalElement extends SpinalElement {
+		attr Boolean toBeDeveloped=false;
+		val SolvedBy [*] #parentSpinalElement childSolvedBy;
+		val InContextOf [*] #contextOfSpinalElement hasContext;
+	}
+	abstract class ContextualElement extends ArgumentElement,InTheContextOfTargetElement {
+	}
+
+
+ 	@gmf.link(source="parentSpinalElement",label="cardinality", target="childSpinalelement", style="solid", width="1",target.decoration="filledclosedarrow",tool.small.path="GSN_tooling_icons/solvedBy.gif"
+	,tool.large.path="GSN_tooling_icons/solvedBy.gif",tool.small.bundle="GSN",tool.large.bundle="GSN")
+	class SolvedBy {
+		ref DecomposableSpinalElement [1] #childSolvedBy parentSpinalElement;
+		ref SolvedByTargetElement [1] #parentSolvedBy childSpinalelement;
+		attr String cardinality; 
+		attr SolvedByMultiplicityExtension multiextension;
+	}
+	@gmf.link(source="contextOfSpinalElement", target="contextualElement", style="solid", width="1",target.decoration="closedarrow",tool.small.path="GSN_tooling_icons/inTheContextOf.gif"
+	,tool.large.path="GSN_tooling_icons/inTheContextOf.gif",tool.small.bundle="GSN",tool.large.bundle="GSN")
+	class InContextOf {
+		ref InTheContextOfTargetElement [1] contextualElement;
+		ref DecomposableSpinalElement [1] #hasContext contextOfSpinalElement;
+	}
+	
+	@gmf.node(label="identifier",label.icon="false",figure="gsnfigures.GSNGoal",tool.small.path="GSN_tooling_icons/Goal.gif"
+	,tool.large.path="GSN_tooling_icons/Goal.gif",tool.small.bundle="GSN",tool.large.bundle="GSN", size="120,80")
+	class Goal extends DecomposableSpinalElement  {
+		attr ElementVisibility visibility;
+		ref Module [0..1] #hasTopLevel isTopLevelGoalOf;
+		//this assoc. is XOR with spinalElement.isPartOf
+		attr Boolean toBeSupportedByContract=false;
+	}
+	@gmf.node(label="identifier",label.icon="false",figure="gsnfigures.GSNStrategy",tool.small.path="GSN_tooling_icons/Strategy.gif"
+	,tool.large.path="GSN_tooling_icons/Strategy.gif",tool.small.bundle="GSN",tool.large.bundle="GSN",size="120,80")
+	class Strategy extends DecomposableSpinalElement  {
+	
+	}
+	@gmf.node(label="identifier",label.icon="false",figure="gsnfigures.GSNSolution",tool.small.path="GSN_tooling_icons/Solution.gif"
+	,tool.large.path="GSN_tooling_icons/Solution.gif",tool.small.bundle="GSN",tool.large.bundle="GSN",size="100,100")
+	class Solution extends SpinalElement  {
+		attr ElementVisibility visibility;
+	}
+	@gmf.node(label="identifier",label.icon="false",figure="gsnfigures.GSNContext",tool.small.path="GSN_tooling_icons/Context.gif"
+	,tool.large.path="GSN_tooling_icons/Context.gif",tool.small.bundle="GSN",tool.large.bundle="GSN",size="120,80")
+	class Context extends ContextualElement {
+		attr ElementVisibility visibility;
+	}
+	@gmf.node(label="identifier",label.icon="false",figure="gsnfigures.GSNJustification",tool.small.path="GSN_tooling_icons/Justification.gif"
+	,tool.large.path="GSN_tooling_icons/Justification.gif",tool.small.bundle="GSN",tool.large.bundle="GSN",size="120,80")
+	class Justification extends ContextualElement {
+	
+	}
+	@gmf.node(label="identifier",label.icon="false",figure="gsnfigures.GSNAssumption",tool.small.path="GSN_tooling_icons/Assumption.gif"
+	,tool.large.path="GSN_tooling_icons/Assumption.gif",tool.small.bundle="GSN",tool.large.bundle="GSN",size="120,80")
+	class Assumption extends ContextualElement {
+	}	
+
+
+	
+	@gmf.node(label="identifier",label.icon="false",figure="gsnfigures.GSNAwayContext",tool.small.path="GSN_tooling_icons/AwayContext.gif"
+	,tool.large.path="GSN_tooling_icons/AwayContext.gif",tool.small.bundle="GSN",tool.large.bundle="GSN",size="120,80")
+	class AwayContext extends ContextualElement {
+		ref Goal [1] pointsTo;
+		@gmf.label(label="moduleIdentifier")
+		attr String [1] moduleIdentifier;
+		
+	}
+	@gmf.node(label="identifier",label.icon="false",figure="gsnfigures.GSNAwaySolution",tool.small.path="GSN_tooling_icons/AwaySolution.gif"
+	,tool.large.path="GSN_tooling_icons/AwaySolution.gif",tool.small.bundle="GSN",tool.large.bundle="GSN",size="120,80")
+	class AwaySolution extends SpinalElement{
+	   ref Solution[1] pointsTo;
+	   @gmf.label(label="moduleIdentifier")
+	   attr String [1] moduleIdentifier;
+	}
+	@gmf.node(label="identifier",label.icon="false",figure="gsnfigures.GSNAwayGoal",tool.small.path="GSN_tooling_icons/AwayGoal.gif"
+	,tool.large.path="GSN_tooling_icons/AwayGoal.gif",tool.small.bundle="GSN",tool.large.bundle="GSN", size="120,80")
+	class AwayGoal extends SpinalElement,InTheContextOfTargetElement {
+		ref Goal [1] pointsTo;
+		@gmf.label(label="moduleIdentifier")
+		attr String [1] moduleIdentifier;
+	
+	}
+	
+	abstract class Module extends ModelElement,SolvedByTargetElement{
+	   ref Module [*] parentModuleOf;
+	   ref Module [*] associatedWithOther;
+		val Goal [*] #isTopLevelGoalOf hasTopLevel; 
+		ref ArgumentElement [*] #isPartOf containsElement;
+		val SolvedByModular [*] #parentSolvedByModuleElement parentSolvedByModular;
+		val InContextOfModular [*] #parentInConextOfModuleElement hasContext;
+	} 
+	@gmf.node(label="identifier",label.icon="false",figure="gsnfigures.GSNArgumentModule",tool.small.bundle="GSN",tool.small.path="GSN_tooling_icons/ArgumentModule.gif"
+	,tool.large.bundle="GSN",tool.large.path="GSN_tooling_icons/ArgumentModule.gif",size="120,80")
+	class ArgumentModule extends Module,InTheContextOfTargetElement {
+		
+	}
+	@gmf.node(label="identifier",label.icon="false",figure="gsnfigures.GSNContract",tool.small.path="GSN_tooling_icons/Contract.gif"
+	,tool.large.path="GSN_tooling_icons/Contract.gif",tool.small.bundle="GSN",tool.large.bundle="GSN",size="120,80")	
+	class ContractModule extends Module {
+	
+	}
+
+	abstract class ModelElement {
+		attr String [1] identifier;
+		@gmf.label(label="description")
+		attr String [1] description;
+		val TaggedValue [*] containsAdditional;
+		
+	}
+	class TaggedValue {
+		attr String [1] key;
+		attr String [1] value;
+	}
+	
+	
+	enum ElementVisibility {
+		Private;
+		Public;
+		}
+	
+	enum SolvedByMultiplicityExtension{
+		Normal;
+		Optional;
+		Multi;
+	   }

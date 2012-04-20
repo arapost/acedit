@@ -1,0 +1,78 @@
+//set the text <description>, as the default description that appears in the description of model elements
+var descriptionLabel = GmfGraph!Label.allInstances;
+for(i in Sequence{0..descriptionLabel.size()-1}){
+	if(descriptionLabel[i].name=('ModelElementDescriptionLabelFigure')){
+		descriptionLabel[i].text='<description>';
+		}
+	if(descriptionLabel[i].name=('AwayGoalModuleIdentifierLabelFigure')){
+		descriptionLabel[i].text='<module id>';
+		}
+	if(descriptionLabel[i].name=('AwaySolutionModuleIdentifierLabelFigure')){
+		descriptionLabel[i].text='<module id>';
+		}
+	if(descriptionLabel[i].name=('AwayContextModuleIdentifierLabelFigure')){
+		descriptionLabel[i].text='<module id>';
+		}
+}
+
+var cardinality=GmfGraph!Label.all.selectOne(r|r.name = 'SolvedByLabelLabel');
+cardinality.text='';
+
+
+
+//set the text of identifier to bold
+var idLabel = GmfGraph!Label.allInstances;
+for(i in Sequence{0..idLabel.size()-1}){
+	if(idLabel[i].name<>('ModelElementDescriptionLabelFigure')and idLabel[i].name<>('AwayGoalModuleIdentifierLabelFigure')
+	and idLabel[i].name<>('AwayContextModuleIdentifierLabelFigure')and idLabel[i].name<>('AwaySolutionModuleIdentifierLabelFigure')){
+		idLabel[i].font=new GmfGraph!BasicFont;
+		idLabel[i].font.style=GmfGraph!FontStyle#BOLD;
+	}
+}
+
+
+//modify the names of the tool groups and adding a new tool group
+var objectsToolGroup=GmfTool!ToolGroup.all.selectOne(g|g.title="Objects");
+objectsToolGroup.title="GSN core";
+
+var connectionsToolGroup=GmfTool!ToolGroup.all.selectOne(g|g.title="Connections");
+connectionsToolGroup.title="GSN relationships";
+var solvedBy =GmfTool!CreationTool.all.selectOne(g|g.title="SolvedBy");
+
+connectionsToolGroup.reorder(Sequence{"SolvedBy", "InContextOf", "SolvedByModular", "InContextOfModular"});
+
+
+
+var palette = GmfTool!Palette.all.selectOne(g|g.title="GSN1Palette");
+var nodesToolGroup := new GmfTool!ToolGroup;
+nodesToolGroup.title="GSN modular extensions";
+nodesToolGroup.collapsible := true;
+var argumentModule =GmfTool!CreationTool.all.selectOne(g|g.title="ArgumentModule");
+var contract =GmfTool!CreationTool.all.selectOne(g|g.title="ContractModule");
+var awayGoal =GmfTool!CreationTool.all.selectOne(g|g.title="AwayGoal");
+var awaySolution =GmfTool!CreationTool.all.selectOne(g|g.title="AwaySolution");
+var awayContext =GmfTool!CreationTool.all.selectOne(g|g.title="AwayContext");
+nodesToolGroup.tools.add(argumentModule);
+nodesToolGroup.tools.add(contract);
+nodesToolGroup.tools.add(awayGoal);
+nodesToolGroup.tools.add(awaySolution);
+nodesToolGroup.tools.add(awayContext);
+palette.tools.add(nodesToolGroup);
+
+//add the relatedDiagram in GmfMap
+var relatedDiagram = GmfMap!NodeMapping.all.selectOne(g|g.domainMetaElement.name="ArgumentModule");
+var canvasMapping := GmfMap!CanvasMapping.all.first();
+relatedDiagram.relatedDiagrams.add(canvasMapping);
+relatedDiagram = GmfMap!NodeMapping.all.selectOne(g|g.domainMetaElement.name="ContractModule");
+relatedDiagram.relatedDiagrams.add(canvasMapping);
+
+operation GmfTool!ToolGroup reorder(order : Sequence(String)) {
+var reordered = new Sequence;
+for (item in order) {
+var tool = self.tools.selectOne(t|t.title = item);
+if (tool.isDefined()) {
+reordered.add(tool);
+}
+}
+self.tools = reordered;
+}

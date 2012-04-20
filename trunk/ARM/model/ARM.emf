@@ -1,0 +1,82 @@
+@namespace(uri="ARM", prefix="ARM")
+@gmf(foo="bar")
+package arm;
+
+@gmf.diagram(foo="bar")
+class Case {
+  val ModelElement[*] contains;
+}
+
+abstract class ModelElement {
+  attr String identifier;
+  @gmf.label(label="description")
+  attr String description;
+  attr String content;
+  val TaggedValue[*] isTagged;
+}
+
+class TaggedValue {
+  attr String key;
+  attr String value;
+}
+@gmf.node(label="identifier",label.icon="false",figure="ellipse", size="100,70")
+class InformationElement extends ArgumentElement {
+}
+
+@gmf.node(label="identifier",label.icon="false",figure="rectangle",size="110,70")
+class Argument extends ModelElement {
+  ref ArgumentElement[*]  containsArgumentElement;
+  ref ArgumentLink[*] containsArgumentLink;
+  ref Argument[*] containsArgument;
+}
+abstract class ArgumentElement extends ModelElement {
+}
+abstract class ArgumentLink extends ModelElement {
+  ref ModelElement[*] source;
+  ref ModelElement[*] target;
+}
+
+class Annotation extends ArgumentLink {
+}
+
+abstract class AssertedRealationship extends ArgumentLink {
+}
+@gmf.link(source="source", target="target", style="solid", width="1",target.decoration="filledclosedarrow")
+class AssertedInference extends AssertedRealationship {
+}
+@gmf.link(source="source", target="target", style="solid", width="1",target.decoration="closedarrow")
+class AssertedContext extends AssertedRealationship {
+}
+
+class AssertedChallenge extends AssertedRealationship {
+}
+@gmf.link(source="source", target="target", style="solid", width="1",target.decoration="arrow")
+class AssertedEvidence extends AssertedRealationship {
+}
+
+class AssertedCounterEvidence extends AssertedRealationship {
+}
+
+abstract class ReasoningElement extends ArgumentElement {
+}
+@gmf.node(label="identifier",label.icon="false",figure="rectangle", size="100,70")
+class CitiationElement extends ArgumentElement {
+  ref ArgumentElement refersToArgumentElement;
+  ref Argument refersToArgument;
+}
+
+@gmf.node(label="identifier",label.icon="false",figure="rectangle", size="100,70")
+class Claim extends ReasoningElement {
+  attr boolean assumed;
+  attr boolean toBeSupported;
+}
+
+class EvidenceAssertation extends Claim {
+}
+
+@gmf.node(label="identifier",label.icon="false", size="100,70")
+class ArgumentReasoning extends ReasoningElement {
+  ref Argument hasStucture;
+  ref AssertedInference[*] describes;
+}
+

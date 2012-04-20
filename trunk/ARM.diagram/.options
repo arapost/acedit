@@ -1,0 +1,7 @@
+# Tracing options for the ARM.diagram plug-in
+
+# Common issues
+ARM.diagram/debug=false
+
+# Visual IDs
+ARM.diagram/debug/visualID=false

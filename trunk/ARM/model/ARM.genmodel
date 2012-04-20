@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ARM/src"
+    modelPluginID="ARM" modelName="ARM" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>ARM.ecore</foreignModel>
+  <genPackages prefix="Arm" disposableProviderFactory="true" ecorePackage="ARM.ecore#/">
+    <genClasses ecoreClass="ARM.ecore#//Case">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ARM.ecore#//Case/contains"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ARM.ecore#//ModelElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ARM.ecore#//ModelElement/identifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ARM.ecore#//ModelElement/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ARM.ecore#//ModelElement/content"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ARM.ecore#//ModelElement/isTagged"/>
+    </genClasses>
+    <genClasses ecoreClass="ARM.ecore#//TaggedValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ARM.ecore#//TaggedValue/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ARM.ecore#//TaggedValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ARM.ecore#//InformationElement"/>
+    <genClasses ecoreClass="ARM.ecore#//Argument">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ARM.ecore#//Argument/containsArgumentElement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ARM.ecore#//Argument/containsArgumentLink"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ARM.ecore#//Argument/containsArgument"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ARM.ecore#//ArgumentElement"/>
+    <genClasses image="false" ecoreClass="ARM.ecore#//ArgumentLink">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ARM.ecore#//ArgumentLink/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ARM.ecore#//ArgumentLink/target"/>
+    </genClasses>
+    <genClasses ecoreClass="ARM.ecore#//Annotation"/>
+    <genClasses image="false" ecoreClass="ARM.ecore#//AssertedRealationship"/>
+    <genClasses ecoreClass="ARM.ecore#//AssertedInference"/>
+    <genClasses ecoreClass="ARM.ecore#//AssertedContext"/>
+    <genClasses ecoreClass="ARM.ecore#//AssertedChallenge"/>
+    <genClasses ecoreClass="ARM.ecore#//AssertedEvidence"/>
+    <genClasses ecoreClass="ARM.ecore#//AssertedCounterEvidence"/>
+    <genClasses image="false" ecoreClass="ARM.ecore#//ReasoningElement"/>
+    <genClasses ecoreClass="ARM.ecore#//CitiationElement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ARM.ecore#//CitiationElement/refersToArgumentElement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ARM.ecore#//CitiationElement/refersToArgument"/>
+    </genClasses>
+    <genClasses ecoreClass="ARM.ecore#//Claim">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ARM.ecore#//Claim/assumed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ARM.ecore#//Claim/toBeSupported"/>
+    </genClasses>
+    <genClasses ecoreClass="ARM.ecore#//EvidenceAssertation"/>
+    <genClasses ecoreClass="ARM.ecore#//ArgumentReasoning">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ARM.ecore#//ArgumentReasoning/hasStucture"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ARM.ecore#//ArgumentReasoning/describes"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

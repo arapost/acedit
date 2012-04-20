@@ -1,0 +1,4 @@
+#Sat Jul 30 13:14:02 BST 2011
+eclipse.preferences.version=1
+gmf_dashboard/domainGenerationModel=platform\:/resource/ARM/model/ARM.genmodel
+gmf_dashboard/domainModel=platform\:/resource/ARM/model/ARM.ecore

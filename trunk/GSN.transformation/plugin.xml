@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="GSN.transformation.plugin2.contribution1"
+            nameFilter="*.gsn1*"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               label="GSN2ARM"
+               path="additions"
+               id="GSN.transformation.plugin2.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="transform"
+               class="gsn.transformation.popup.actions.GSN2ARM"
+               menubarPath="GSN.transformation.plugin2.menu1/group1"
+               enablesFor="1"
+               id="GSN.transformation.plugin2.newAction">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
