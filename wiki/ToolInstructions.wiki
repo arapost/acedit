@@ -12,8 +12,7 @@ The [http://www.eclipse.org/downloads/packages/eclipse-modeling-tools/indigosr2 
 
 The update sites you will need to install the plugins are:
 
- * http://download.eclipse.org/modeling/gmp/gmf-tooling/updates/releases/
-Installs the Graphical Model Framework tools
+ * http://download.eclipse.org/modeling/gmp/gmf-tooling/updates/releases/ . Installs the Graphical Model Framework tools
  * http://download.eclipse.org/epsilon/updates/ . Installs the Epsilon framework
 
 ----
@@ -29,4 +28,5 @@ The last step is to download the acedit projects into your eclipse workspace. Th
  # press Next
  # Choose "Create a new repository location"
  # press Next
- # type the Url that is provided in the [http://code.google.com/p/acedit/source/checkout Source] of this site
+ # type the Url that is provided in the [http://code.google.com/p/acedit/source/checkout Source] section of this site
+ # follow the instructions of the wizard to download the code into your Eclpse workspace from the SVN repository.
