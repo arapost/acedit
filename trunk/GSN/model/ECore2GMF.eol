@@ -1,8 +1,0 @@
-//set the text <description>, as the default description that appears in the description of model elements
-var descriptionLabel = GmfGraph!Label.allInstances;
-for(i in Sequence{0..descriptionLabel.size()-1}){
-	if(descriptionLabel[i].name=('ModelElementDescriptionLabelFigure')){
-		descriptionLabel[i].text='<description>';
-		}
-}
-
