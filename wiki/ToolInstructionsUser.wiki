@@ -1,13 +1,23 @@
-#summary One-sentence summary of this page.
+This page provides instructions on how to install and test the *acedit*.
 
-= Introduction =
+= Installation =
 
-Add your content here.
+==Install Eclipse==
 
+The [http://www.eclipse.org/downloads/packages/eclipse-modeling-tools/indigosr2 Eclipse Modeling Tools] distribution is recommended, in which the tool was implemented and tested. In addition this version of Eclipse contains some of the prerequisites for the *acedit*.
 
-= Details =
+----
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+==Install the necessary Eclipse plugins==
+
+The update sites you will need to install the plugins are:
+
+ * http://download.eclipse.org/modeling/gmp/gmf-tooling/updates/releases/ . Installs the Graphical Model Framework tools
+ * http://download.eclipse.org/epsilon/updates/ . Installs the Epsilon framework
+
+----
+
+==Install the Assurance Case Argument Editor==
+
+The install the *acedit* tool through eclipse updates using the following update site: 
+ * http://acedit.googlecode.com/svn/trunk/GSN.updatesite
