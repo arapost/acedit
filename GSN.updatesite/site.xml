@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/GSN.feature_1.0.0.201204201255.jar" id="GSN.feature" version="1.0.0.201204201255">
+      <category name="GSN"/>
+   </feature>
+   <category-def name="GSN" label="GSN"/>
+</site>
