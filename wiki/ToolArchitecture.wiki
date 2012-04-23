@@ -1,0 +1,10 @@
+= Introduction =
+
+This page presents a high level layered Architecture of *acedit*
+
+
+= Details =
+
+The tool was implemented as a set of eclipse plug-ins under the Eclipse project. The tool implements graphical user interface which consists of diagram editors and model management tools which are unified by a common framework – the tool core. The following figure presents a layered architecture of the tool and its relationships with the eclipse framework and other eclipse plug-ins.
+
+[http://code.google.com/p/acedit/source/browse/acedit%20images/layered%20architecture.png]
