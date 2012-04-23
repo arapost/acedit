@@ -1,5 +1,4 @@
 
-
 = Introduction =
 
 This page presents the features of *acedit*
@@ -9,6 +8,6 @@ This page presents the features of *acedit*
  * Graphical editor for the GSN, based on the GSN standard
  * Graphical editor for the ARM, based on the ARM metamodel available by sysa.omg.org
  * Model management tasks for the GSN editor: 
- # Model validation
- # In-place model transformation
+        # Model validation
+        # In-place model transformation
  * Model transformation between GSN and ARM models
