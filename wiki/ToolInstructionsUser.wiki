@@ -36,4 +36,4 @@ After you successfully have completed the installation, you must be able to crea
  # select GSN1 diagram
  # select Next-> Finish
 
-You must be able to see the acedit editor in your workspace and you start creating your project!
+You must be able to see the acedit editor in your workspace and start creating your project!
