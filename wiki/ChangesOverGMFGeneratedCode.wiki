@@ -14,7 +14,7 @@ The default functionality for modifying the displaying of GSN diagrams did not p
 In package GSN1.diagram.edit.parts
 Java file: !AssumptionEditPart.java
 
- # the method: protected void handleNotificationEvent(Notification event) was replaced with the following:
+ * the method: protected void handleNotificationEvent(Notification event) was replaced with the following:
 
 {{{
 @Override
@@ -45,7 +45,7 @@ Java file: !AssumptionEditPart.java
 
 }}}
 
- # the method: protected IFigure createNodeShape() was replaced with the following:
+ * the method: protected IFigure createNodeShape() was replaced with the following:
 
 {{{
 /**
@@ -69,7 +69,7 @@ Java file: !AssumptionEditPart.java
 In package GSN1.diagram.edit.parts
 Java file: !ContextEditPart.java
 
- # the method: protected void handleNotificationEvent(Notification event) was replaced with the following:
+ * the method: protected void handleNotificationEvent(Notification event) was replaced with the following:
 {{{
 @Override
 	protected void handleNotificationEvent(Notification event) {
@@ -105,7 +105,7 @@ Java file: !ContextEditPart.java
 	}
 }}}
 
- # the method: protected IFigure createNodeShape() was replaced with the following:
+ * the method: protected IFigure createNodeShape() was replaced with the following:
 {{{
 
 		/**
@@ -126,4 +126,371 @@ Java file: !ContextEditPart.java
 
   		return primaryShape;
 	}
+}}}
+
+=== !GoalEditPart.java ===
+In package GSN1.diagram.edit.parts
+Java file: !GoalEditPart.java
+
+ * the method: protected void handleNotificationEvent(Notification event) was replaced with the following:
+{{{
+@Override
+	protected void handleNotificationEvent(Notification event) {
+		if (event.getNotifier() == getModel()
+				&& EcorePackage.eINSTANCE.getEModelElement_EAnnotations()
+						.equals(event.getFeature())) {
+			handleMajorSemanticChange();
+		} else {
+
+			if (event.getNotifier() instanceof Goal) {
+
+				Goal goal = (Goal) ((Node) this.getModel()).getElement();
+				if (goal.getToBeDeveloped() == true
+						&& goal.getTobeinstantiated() == false) {
+					GoalFigure figure = (GoalFigure) this.getPrimaryShape();
+					figure.setShape(1);
+				} else if (goal.getToBeDeveloped() == false
+						&& goal.getTobeinstantiated() == true) {
+					GoalFigure figure = (GoalFigure) this.getPrimaryShape();
+					figure.setShape(2);
+				} else if (goal.getToBeDeveloped() == true
+						&& goal.getTobeinstantiated() == true) {
+					GoalFigure figure = (GoalFigure) this.getPrimaryShape();
+					figure.setShape(3);
+				} else if(goal.getToBeSupportedByContract() == true){
+					GoalFigure figure = (GoalFigure) this.getPrimaryShape();
+					figure.setShape(4);
+				}
+				else {
+					GoalFigure figure = (GoalFigure) this.getPrimaryShape();
+					figure.setShape(0);
+				}
+				if (goal.getVisibility() == ElementVisibility.PUBLIC) {
+					GoalFigure figure = (GoalFigure) this.getPrimaryShape();
+					figure.setVisibility(true);
+				} else {
+					GoalFigure figure = (GoalFigure) this.getPrimaryShape();
+					figure.setVisibility(false);
+				}
+			}
+			super.handleNotificationEvent(event);
+		}
+	}
+}}}
+
+ * the method: protected IFigure createNodeShape() was replaced with the following:
+{{{
+/**
+	 * @generated NOT
+	 */
+	protected IFigure createNodeShape() {
+		Goal goal = (Goal) ( (Node) this.getModel()).getElement();
+  		if (goal.getToBeDeveloped()==true && goal.getTobeinstantiated()==false){ 
+  			primaryShape = new GoalFigure();
+  			((GoalFigure)(primaryShape)).setShape(1);
+  			
+  		}
+  		else if (goal.getTobeinstantiated()==true && goal.getToBeDeveloped()==false){ 
+  			primaryShape = new GoalFigure();
+  			((GoalFigure)(primaryShape)).setShape(2);
+
+  		}
+  		else if (goal.getToBeDeveloped()==true && goal.getTobeinstantiated()==true){ 
+  			primaryShape = new GoalFigure();
+  			((GoalFigure)(primaryShape)).setShape(3);
+  		}
+  		else if(goal.getToBeSupportedByContract()==true){
+  			primaryShape = new GoalFigure();
+  			((GoalFigure)(primaryShape)).setShape(4);
+  		}
+  		else{
+  			primaryShape = new GoalFigure();
+  		}
+  		if(goal.getVisibility()==ElementVisibility.PUBLIC)
+  			((GoalFigure)(primaryShape)).setVisibility(true);
+
+  		return primaryShape;
+	}
+}}}
+
+=== !JustificationEditPart.java ===
+In package GSN1.diagram.edit.parts
+Java file: !JustificationEditPart.java
+
+ * the method: protected void handleNotificationEvent(Notification event) was replaced with the following:
+{{{
+	@Override
+	protected void handleNotificationEvent(Notification event) {
+		  if (event.getNotifier() == getModel()
+			      && EcorePackage.eINSTANCE.getEModelElement_EAnnotations()
+			          .equals(event.getFeature())) {
+			    handleMajorSemanticChange();
+			  } else {
+
+			    if (event.getNotifier() instanceof Justification) {
+			     
+			    	Justification justification = (Justification) ( (Node) this.getModel()).getElement();
+			    	
+			    	if (justification.getTobeinstantiated()==true){ 
+			    		JustificationFigure figure = (JustificationFigure) this.getPrimaryShape();
+				    	  figure.setShape(1);
+				  	}
+			  		else{
+			  			JustificationFigure figure = (JustificationFigure) this.getPrimaryShape();
+				    	  figure.setShape(0);
+			  		}
+			    
+			    }
+			    super.handleNotificationEvent(event);
+			  }
+	}
+
+}}}
+
+ * the method: protected IFigure createNodeShape() was replaced with the following:
+{{{
+/**
+	 * @generated NOT
+	 */
+	protected IFigure createNodeShape() {
+		Justification justification = (Justification) ( (Node) this.getModel()).getElement();
+  		if (justification.getTobeinstantiated()==true){ 
+  			primaryShape = new JustificationFigure();
+  			((JustificationFigure)(primaryShape)).setShape(1);
+  		}
+  		
+  		else{
+  			primaryShape = new JustificationFigure();
+  		}
+  		return primaryShape;
+	}
+}}}
+
+=== !SolutionEditPart.java ===
+In package GSN1.diagram.edit.parts
+Java file: !SolutionEditPart.java
+
+ * the method: protected void handleNotificationEvent(Notification event) was replaced with the following:
+{{{
+	@Override
+	protected void handleNotificationEvent(Notification event) {
+		  if (event.getNotifier() == getModel()
+			      && EcorePackage.eINSTANCE.getEModelElement_EAnnotations()
+			          .equals(event.getFeature())) {
+			    handleMajorSemanticChange();
+			  } else {
+
+			    if (event.getNotifier() instanceof Solution) {
+			     
+			    	Solution solution = (Solution) ( (Node) this.getModel()).getElement();
+			    	
+			    	if (solution.getTobeinstantiated()==true){ 
+			    		SolutionFigure figure = (SolutionFigure) this.getPrimaryShape();
+				    	  figure.setShape(1);
+				  	}
+			  		else{
+			  			SolutionFigure figure = (SolutionFigure) this.getPrimaryShape();
+				    	  figure.setShape(0);
+			  		}
+			    	if(solution.getVisibility()==ElementVisibility.PUBLIC){
+			    		SolutionFigure figure = (SolutionFigure) this.getPrimaryShape();
+			    		figure.setVisibility(true);
+			    	}
+			    	else{
+			    		SolutionFigure figure = (SolutionFigure) this.getPrimaryShape();
+			    		figure.setVisibility(false);
+			    	}
+			    }
+			    super.handleNotificationEvent(event);
+			  }
+	}
+
+}}}
+
+ * the method: protected IFigure createNodeShape() was replaced with the following:
+{{{
+/**
+	 * @generated NOT
+	 */
+	protected IFigure createNodeShape() {
+		Solution solution = (Solution) ( (Node) this.getModel()).getElement();
+  		if (solution.getTobeinstantiated()==true){ 
+  			primaryShape = new SolutionFigure();
+  			((SolutionFigure)(primaryShape)).setShape(1);
+  		}
+  		
+  		else{
+  			primaryShape = new SolutionFigure();
+  		}
+  		if(solution.getVisibility()==ElementVisibility.PUBLIC)
+  			((SolutionFigure)(primaryShape)).setVisibility(true);
+
+  		return primaryShape;
+	}
+}}}
+
+
+=== !StradegyEditPart.java ===
+In package GSN1.diagram.edit.parts
+Java file: !StradegyEditPart.java
+
+ * the method: protected void handleNotificationEvent(Notification event) was replaced with the following:
+{{{
+		@Override
+	protected void handleNotificationEvent(Notification event) {
+		  if (event.getNotifier() == getModel()
+			      && EcorePackage.eINSTANCE.getEModelElement_EAnnotations()
+			          .equals(event.getFeature())) {
+			    handleMajorSemanticChange();
+			  } else {
+
+			    if (event.getNotifier() instanceof Strategy) {
+			     
+			    	Strategy strategy = (Strategy) ( (Node) this.getModel()).getElement();
+			    	if (strategy.getToBeDeveloped()==true && strategy.getTobeinstantiated()==false){ 
+			    	StrategyFigure figure = (StrategyFigure) this.getPrimaryShape();
+			    	  figure.setShape(1);
+			  		}
+			    	else if (strategy.getToBeDeveloped()==false && strategy.getTobeinstantiated()==true){ 
+			    		StrategyFigure figure = (StrategyFigure) this.getPrimaryShape();
+				    	  figure.setShape(2);
+				  	}
+			    	else if (strategy.getToBeDeveloped()==true && strategy.getTobeinstantiated()==true){ 
+			    		StrategyFigure figure = (StrategyFigure) this.getPrimaryShape();
+				    	  figure.setShape(3);
+				  	}
+			  		else{
+			  			StrategyFigure figure = (StrategyFigure) this.getPrimaryShape();
+				    	  figure.setShape(0);
+			  		}
+			    	
+			    }
+			    super.handleNotificationEvent(event);
+			  }
+	}
+
+}}}
+
+ * the method: protected IFigure createNodeShape() was replaced with the following:
+{{{
+/**
+	 * @generated NOT
+	 */
+	protected IFigure createNodeShape() {
+		Strategy strategy = (Strategy) ( (Node) this.getModel()).getElement();
+  		if (strategy.getToBeDeveloped()==true && strategy.getTobeinstantiated()==false){ 
+  			primaryShape = new StrategyFigure();
+  			((StrategyFigure)(primaryShape)).setShape(1);
+  			
+  		}
+  		else if (strategy.getTobeinstantiated()==true && strategy.getToBeDeveloped()==false){ 
+  			primaryShape = new StrategyFigure();
+  			((StrategyFigure)(primaryShape)).setShape(2);
+
+  		}
+  		else if (strategy.getToBeDeveloped()==true && strategy.getTobeinstantiated()==true){ 
+  			primaryShape = new StrategyFigure();
+  			((StrategyFigure)(primaryShape)).setShape(3);
+  		}
+  		else{
+  			primaryShape = new StrategyFigure();
+  		}
+
+  		return primaryShape;
+	}
+}}}
+
+=== !SolvedByEditPart.java ===
+
+In package GSN1.diagram.edit.parts
+Java file: !SolvedByEditPart.java
+
+ * The following method was added:
+{{{
+
+/**
+	 * @generated NOT
+	 */
+	@Override
+	protected void handleNotificationEvent(Notification event) {
+		  if (event.getNotifier() == getModel()
+			      && EcorePackage.eINSTANCE.getEModelElement_EAnnotations()
+			          .equals(event.getFeature())) {
+			    handleMajorSemanticChange();
+			  } else {
+
+			    if (event.getNotifier() instanceof SolvedBy) {
+			     
+			    	SolvedBy solvedBy = (SolvedBy) ((View) this.getModel()).getElement();
+			    	if (solvedBy.getMultiextension()==SolvedByMultiplicityExtension.OPTIONAL ){ 
+			    		SolvedByFigure figure = (SolvedByFigure) this.getPrimaryShape();
+			    	  figure.setShape(1);
+			        solvedBy.setCardinality("");
+
+			  		}
+			    	else if (solvedBy.getMultiextension()==SolvedByMultiplicityExtension.MULTI ){ 
+			    		SolvedByFigure figure = (SolvedByFigure) this.getPrimaryShape();
+				    	  figure.setShape(2);
+				
+
+				  	}
+			  		else{
+			  			SolvedByFigure figure = (SolvedByFigure) this.getPrimaryShape();
+				    	  figure.setShape(0);
+					solvedBy.setCardinality("");
+
+			  		}
+			    
+			    }
+			    super.handleNotificationEvent(event);
+			  }
+	}
+
+}}}
+
+* The method: protected Connection createConnectionFigure() was replaced by the following:
+{{{
+/**
+	 * Creates figure for this edit part.
+	 * 
+	 * Body of this method does not depend on settings in generation model
+	 * so you may safely remove <i>generated</i> tag and modify it.
+	 * 
+	 * @generated NOT
+	 */
+
+	protected Connection createConnectionFigure() {
+		SolvedBy solvedBy = (SolvedBy) ((View) this.getModel()).getElement();
+		SolvedByFigure figure;
+		if (solvedBy.getMultiextension()==SolvedByMultiplicityExtension.OPTIONAL ){ 
+    		figure = new SolvedByFigure();
+    		figure.setShape(1);
+  		}
+    	else if (solvedBy.getMultiextension()==SolvedByMultiplicityExtension.MULTI){ 
+    		figure = new SolvedByFigure();
+    		figure.setShape(2);
+	  	}
+  		else{
+  			figure = new SolvedByFigure();
+    		figure.setShape(0);
+  		}
+		return  figure;
+	}
+}}}
+
+ * The lines: 
+{{{
+/**
+	 * @generated 
+	 */
+	public class SolvedByFigure extends PolylineConnectionEx{
+}}}
+
+ were replaced by:
+{{{
+/**
+	 * @generated NOT
+	 */
+	public class SolvedByFigure extends GSNSolvedBy {
+
 }}}
