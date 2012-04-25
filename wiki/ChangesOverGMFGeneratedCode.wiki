@@ -494,3 +494,74 @@ Java file: !SolvedByEditPart.java
 	public class SolvedByFigure extends GSNSolvedBy {
 
 }}}
+
+== Modifications for the default delete from keyboard behaviour ==
+
+The default functionality for delete from the keyboard supported by the generated code wasn’t sufficient, since the element was deleted only from the diagram view and not from the model view delete. The following modification were done:
+
+=== !GSN1DiagramEditor.java ===
+In package GSN1.diagram.part
+Java file: !GSN1DiagramEditor.java
+
+the method protected void configureGraphicalViewer() was replaced by:
+{{{
+/**
+	 * @generated NOT
+	 */
+	protected void configureGraphicalViewer() {
+		super.configureGraphicalViewer();
+		DiagramEditorContextMenuProvider provider = new DiagramEditorContextMenuProvider(
+				this, getDiagramGraphicalViewer());
+		getDiagramGraphicalViewer().setContextMenu(provider);
+		getSite().registerContextMenu(ActionIds.DIAGRAM_EDITOR_CONTEXT_MENU,
+				provider, getDiagramGraphicalViewer());
+		KeyHandler keyHandler = getDiagramGraphicalViewer().getKeyHandler();
+		keyHandler.put(
+		    KeyStroke.getPressed(SWT.DEL, 127, 0),
+		    getActionRegistry().getAction(
+		        ActionIds.ACTION_DELETE_FROM_MODEL
+		    )
+		);
+		keyHandler.put(
+		    KeyStroke.getPressed(SWT.BS, 8, 0),
+		    getActionRegistry().getAction(
+		        ActionIds.ACTION_DELETE_FROM_MODEL
+		    )
+		);
+	}
+}}}
+
+== Modifications for the delete behaviour when an Argument or Contract module is deleted==
+ 
+By default when the user deletes an element, including the ArgumentModule and the ContractModule elements, nothing else is deleted. In the case of GSN diagrams, we wanted to add the following functionality: when the user deletes an argument or contract module we want also the elements that belong to this modules to be deleted. The reason was that there is that it make sense when a user deletes an Argument module to also delete all the contained elements. For this reason the following modifications were done: 
+
+=== !ArgumentModuleItemSemanticEditPolicy.java ===
+
+In package GSN1.diagram.edit.policies
+Java file: !ArgumentModuleItemSemanticEditPolicy.java
+
+ * in the method protected Command getDestroyElementCommand(DestroyElementRequest req), the following code was added before the return statement: 
+{{{
+ArgumentModule ar=(ArgumentModule)view.getElement();
+		for(int i=0;i<ar.getContainsElement().size();i++){
+			DestroyElementRequest r = new DestroyElementRequest(
+					ar.getContainsElement().get(i), false);
+			cmd.add(new DestroyElementCommand(r));
+		}
+}}} 
+
+
+=== !ContractModuleItemSemanticEditPolicy.java ===
+
+In package GSN1.diagram.edit.policies
+Java file: !ContractModuleItemSemanticEditPolicy.java
+
+ * in the method protected Command getDestroyElementCommand(DestroyElementRequest req), the following code was added before the return statement: 
+{{{
+ContractModule ar=(ContractModule)view.getElement();
+		for(int i=0;i<ar.getContainsElement().size();i++){
+			DestroyElementRequest r = new DestroyElementRequest(
+					ar.getContainsElement().get(i), false);
+			cmd.add(new DestroyElementCommand(r));
+		}
+}}} 
