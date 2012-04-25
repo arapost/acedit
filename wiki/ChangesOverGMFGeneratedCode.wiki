@@ -499,7 +499,7 @@ Java file: !SolvedByEditPart.java
 
 The default functionality for delete from the keyboard supported by the generated code wasn’t sufficient, since the element was deleted only from the diagram view and not from the model view delete. The following modification were done:
 
-=== !GSN1DiagramEditor.java ===
+=== GSN1DiagramEditor.java ===
 In package GSN1.diagram.part
 Java file: !GSN1DiagramEditor.java
 
