@@ -16,6 +16,7 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientRelationshipReques
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
 
+import GSN1.ContractModule;
 import GSN1.diagram.edit.commands.InContextOfModularCreateCommand;
 import GSN1.diagram.edit.commands.InContextOfModularReorientCommand;
 import GSN1.diagram.edit.commands.SolvedByCreateCommand;
@@ -98,6 +99,12 @@ public class ContractModuleItemSemanticEditPolicy extends
 			cmd.add(new DestroyElementCommand(req));
 		} else {
 			cmd.add(new DeleteCommand(getEditingDomain(), view));
+		}
+		ContractModule ar=(ContractModule)view.getElement();
+		for(int i=0;i<ar.getContainsElement().size();i++){
+			DestroyElementRequest r = new DestroyElementRequest(
+					ar.getContainsElement().get(i), false);
+			cmd.add(new DestroyElementCommand(r));
 		}
 		return getGEFWrapper(cmd.reduce());
 	}
