@@ -1,4 +1,3 @@
-
 = Introduction =
 
 This page lists all the changes that were done over the generated GMF code for both the GSN and ARM diagrams. The purpose of the modification of the generated code was to satisfy the requirements in order to reach the desired result. 
@@ -17,7 +16,7 @@ class: AssumptionEditPart
 
  # the method: protected void handleNotificationEvent(Notification event) was replaced with the following:
 
-'@Override
+{{{@Override
 	protected void handleNotificationEvent(Notification event) {
 		  if (event.getNotifier() == getModel()
 			      && EcorePackage.eINSTANCE.getEModelElement_EAnnotations()
@@ -43,5 +42,4 @@ class: AssumptionEditPart
 			  }
 	}
 
-	'
-
+}}}
