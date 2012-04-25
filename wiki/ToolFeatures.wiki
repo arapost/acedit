@@ -1,4 +1,4 @@
-
+#summary A conclusion of the tool's features
 = Introduction =
 
 This page presents the features of *acedit*
