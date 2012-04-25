@@ -715,5 +715,23 @@ the method protected DirectEditManager getManager(), was replaced by:
 
 = Changes over the generated GMF code for ARM=
 
-Only one modification were done in the generated code for ARM. However as it is referred in the section FutureWork, it is trivial to enrich the ARM diagram with similar functionality as the GSN one.
+Only one modification were done in the generated code for ARM. However as it is described in section FutureWork, it is trivial to enrich the ARM diagram with similar functionality as the GSN one.
+
+== Modification for change the behaviour of the auto arrange elements==
+Project: ARM.diagram
+file: plugin.xml
+The following code was added:
+{{{
+<extension
+point="org.eclipse.gmf.runtime.diagram.ui.layoutProviders">
+<layoutProvider
+
+class=" org.eclipse.gmf.runtime.diagram.ui.providers.TopDownProvider ">
+<Priority
+name="Highest">
+</Priority>
+</layoutProvider>
+</extension>
+}}}
+
  
