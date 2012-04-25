@@ -1,3 +1,4 @@
+#summary Instructions for users on how to install acedit
 This page provides instructions on how to install and use the *acedit* tool for end users.
 
 = Installation =
