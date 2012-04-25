@@ -45,7 +45,7 @@ Java file: !AssumptionEditPart.java
 
 }}}
 
-# the method: protected IFigure createNodeShape() was replaced with the following:
+ # the method: protected IFigure createNodeShape() was replaced with the following:
 
 {{{
 /**
@@ -61,6 +61,69 @@ Java file: !AssumptionEditPart.java
   		else{
   			primaryShape = new AssumptionFigure();
   		}
+  		return primaryShape;
+	}
+}}}
+
+=== !ContextEditPart.java ===
+In package GSN1.diagram.edit.parts
+Java file: !ContextEditPart.java
+
+ # the method: protected void handleNotificationEvent(Notification event) was replaced with the following:
+{{{
+@Override
+	protected void handleNotificationEvent(Notification event) {
+		  if (event.getNotifier() == getModel()
+			      && EcorePackage.eINSTANCE.getEModelElement_EAnnotations()
+			          .equals(event.getFeature())) {
+			    handleMajorSemanticChange();
+			  } else {
+
+			    if (event.getNotifier() instanceof Context) {
+			     
+			    	Context context = (Context) ( (Node) this.getModel()).getElement();
+			    	
+			    	if (context.getTobeinstantiated()==true){ 
+			    		ContextFigure figure = (ContextFigure) this.getPrimaryShape();
+				    	  figure.setShape(1);
+				  	}
+			  		else{
+			  			ContextFigure figure = (ContextFigure) this.getPrimaryShape();
+				    	  figure.setShape(0);
+			  		}
+			    	if(context.getVisibility()==ElementVisibility.PUBLIC){
+			    		ContextFigure figure = (ContextFigure) this.getPrimaryShape();
+			    		figure.setVisibility(true);
+			    	}
+			    	else{
+			    		ContextFigure figure = (ContextFigure) this.getPrimaryShape();
+			    		figure.setVisibility(false);
+			    	}
+			    }
+			    super.handleNotificationEvent(event);
+			  }
+	}
+}}}
+
+ # the method: protected IFigure createNodeShape() was replaced with the following:
+{{{
+
+		/**
+	 * @generated NOT
+	 */
+	protected IFigure createNodeShape() {
+		Context context = (Context) ( (Node) this.getModel()).getElement();
+  		if (context.getTobeinstantiated()==true){ 
+  			primaryShape = new ContextFigure();
+  			((ContextFigure)(primaryShape)).setShape(1);
+  		}
+  		
+  		else{
+  			primaryShape = new ContextFigure();
+  		}
+  		if(context.getVisibility()==ElementVisibility.PUBLIC)
+  			((ContextFigure)(primaryShape)).setVisibility(true);
+
   		return primaryShape;
 	}
 }}}
