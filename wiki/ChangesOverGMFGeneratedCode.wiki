@@ -44,3 +44,23 @@ Java file: !AssumptionEditPart.java
 	}
 
 }}}
+
+# the method: protected IFigure createNodeShape() was replaced with the following:
+
+{{{
+/**
+	 * @generated NOT
+	 */
+	protected IFigure createNodeShape() {
+		Assumption assumption = (Assumption) ( (Node) this.getModel()).getElement();
+  		if (assumption.getTobeinstantiated()==true){ 
+  			primaryShape = new AssumptionFigure();
+  			((AssumptionFigure)(primaryShape)).setShape(1);
+  		}
+  		
+  		else{
+  			primaryShape = new AssumptionFigure();
+  		}
+  		return primaryShape;
+	}
+}}}
