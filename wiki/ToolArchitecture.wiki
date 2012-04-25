@@ -1,3 +1,4 @@
+#summary The architecture of acedit is presented
 = Introduction =
 
 This page presents a high level layered Architecture of *acedit*
