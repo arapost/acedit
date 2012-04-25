@@ -111,7 +111,14 @@ public class ArgumentModuleItemSemanticEditPolicy extends
 		} else {
 			cmd.add(new DeleteCommand(getEditingDomain(), view));
 		}
+		ArgumentModule ar=(ArgumentModule)view.getElement();
+		for(int i=0;i<ar.getContainsElement().size();i++){
+			DestroyElementRequest r = new DestroyElementRequest(
+					ar.getContainsElement().get(i), false);
+			cmd.add(new DestroyElementCommand(r));
+		}
 		return getGEFWrapper(cmd.reduce());
+		
 	}
 
 	/**
