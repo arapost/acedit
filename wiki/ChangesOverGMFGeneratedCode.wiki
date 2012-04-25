@@ -1,3 +1,5 @@
+#summary The changes done over the GMF generated code
+
 = Introduction =
 
 This page lists all the changes that were done over the generated GMF code for both the GSN and ARM diagrams. The purpose of the modification of the generated code was to satisfy the requirements in order to reach the desired result. 
