@@ -10,9 +10,9 @@ This sections lists the modifications over the generated code for GSN. The reaso
 
 The default functionality for modifying the displaying of GSN diagrams did not permit to change the appearance of an element according to changes in its attributes. That wasn’t sufficient, since elements such as the Goal has to render differently according to its status that is related with the GSN extensions (public, undeveloped etc ). The following modification were done:
 
-=== AssumptionEditPart.java ===
+=== !AssumptionEditPart.java ===
 In package GSN1.diagram.edit.parts
-Java file: AssumptionEditPart.java
+Java file: !AssumptionEditPart.java
 
  # the method: protected void handleNotificationEvent(Notification event) was replaced with the following:
 
