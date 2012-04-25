@@ -718,8 +718,10 @@ the method protected DirectEditManager getManager(), was replaced by:
 Only one modification were done in the generated code for ARM. However as it is described in section FutureWork, it is trivial to enrich the ARM diagram with similar functionality as the GSN one.
 
 == Modification for change the behaviour of the auto arrange elements==
+
 Project: ARM.diagram
 file: plugin.xml
+
 The following code was added:
 {{{
 <extension
