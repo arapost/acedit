@@ -288,4 +288,4 @@ http://acedit.googlecode.com/svn/acedit%20images/transformation%20plugin.png
 
 It's very easy to add your own rules or modify the existing rules. What you have to do is to find the ETL file and modify it. Then you execute the code again and the modifications have to be applied.
  * The ETL code can be found in: GSN.transformation/src/gsn/transformation/core/GSN2ARM.
- * To execute the code follow the instruction in [ToolInstructionsDeveloper#Test the tool]
+ * To execute the code follow the instruction in [ToolInstructionsDeveloper#Test%20the%20tool]
