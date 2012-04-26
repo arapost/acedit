@@ -2,7 +2,7 @@
 
 = Introduction =
 
-This section presents the Model-to-Model transformation of *acedit*. First the functionality and interaction of the transformation is explained, followed by the transformation code and instructions on how to add your own transformation rules.
+This section presents the Model-to-Model transformation of *acedit*. First the functionality and interaction of the transformation with the tool is explained, followed by the transformation code and instructions on how to add your own transformation rules.
 
 
 = The transformation tool =
