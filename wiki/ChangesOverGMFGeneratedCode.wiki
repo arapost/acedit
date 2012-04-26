@@ -647,9 +647,10 @@ Java file: !OpenDiagramEditPolicy.java
 in package GSN1.diagram.edit.parts
 Java file: !CaseEditPart.java
 in method protected void createDefaultEditPolicies()
-the following line was put in commnets:
+the following line was put in comments:
+{{{
 installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,new CaseCanonicalEditPolicy());
-
+}}}
 == Modification for the drag and drop functionality ==
 
 The default generated GMF code does not support drag and drop functionality from the toolbar to the diagram area. As a result the following modification was done:
