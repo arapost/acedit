@@ -655,7 +655,7 @@ installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,new CaseCanonicalEditPolicy());
 
 The default generated GMF code does not support drag and drop functionality from the toolbar to the diagram area. As a result the following modification was done:
 
-=== !GSN1PaletteFactory.java === 
+=== GSN1PaletteFactory.java === 
 In package: GSN1.diagram.part
 Java file: !GSN1PaletteFactory.java
 
