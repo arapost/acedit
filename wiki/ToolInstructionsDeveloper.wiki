@@ -32,3 +32,20 @@ The last step is to download the acedit projects into your eclipse workspace. Th
  # press Next
  # type the Url that is provided in the [http://code.google.com/p/acedit/source/checkout Source] section of this site
  # follow the instructions of the wizard to download the code into your Eclpse workspace from the SVN repository.
+
+=Test the tool=
+
+After you successfully install the the necessary plug-ins and the code you must be able to test the tool by executing the following steps:
+
+ # Launch a new eclipse instance from the "Run - Eclipse Application" menu using "-XX:PermSize=64M -XX:MaxPermSize=128M -Xms512M -Xmx1024M" as VM arguments in the Run Configuration
+ # select File->new->project
+ # select General-> Project
+ # select next and give a name to your project
+ # select finish
+ # press right click in the created project
+ # select New->Other
+ # in the pop up wizard type GSN
+ # select GSN1 diagram
+ # select Next-> Finish
+
+You must be able to see the acedit editor in your workspace and start testing the tool!
