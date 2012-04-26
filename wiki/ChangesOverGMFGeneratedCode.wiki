@@ -450,7 +450,7 @@ Java file: !SolvedByEditPart.java
 
 }}}
 
-* The method: protected Connection createConnectionFigure() was replaced by the following:
+ * The method: protected Connection createConnectionFigure() was replaced by the following:
 {{{
 /**
 	 * Creates figure for this edit part.
