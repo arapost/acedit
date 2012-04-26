@@ -1,0 +1,14 @@
+#summary The model to model transformation functionality of acedit
+
+= Introduction =
+
+This section presents the Model-to-Model transformation of *acedit*. First the functionality and interaction of the transformation is explained, followed by the transformation code and instructions on how to add your own transformation rules.
+
+
+= The transformation tool =
+
+The transformation tool is an independent tool, since is not integrated directly to the editors. However it uses as input the GSN model which derives from the model view to construct an ARM model which results to the creation of an ARM model and diagram view. The figure below presents an activity diagram which presents the interaction between the users and the different components of the system at runtime in order to perform the transformation. 
+
+http://acedit.googlecode.com/svn/acedit%20images/activity%20diagram%20transformation.jpg
+
+The user selects a created GSN diagram or GSN model from the project explorer in which the project, that contains the views, is located. After that the user selects the transformation action for the selected element. This action triggers the transformation tool to perform the transformation. The transformation tool requests the user-created GSN model in order to use it as input for the transformation. The GSN editor subsystem sends the requested GSN model in which the transformation tool will perform the transformation based on the GSN and ARM metamodels. The transformation tool generates an equivalent ARM model and results an ARM model and diagram view. The user is now able to see and manipulate the generated ARM editor. 
