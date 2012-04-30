@@ -103,7 +103,6 @@ class Assumption extends ContextualElement {
 
 class AwayContext extends ContextualElement {
 	ref Goal [1] pointsTo;
-	@gmf.label(label="moduleIdentifier")
 	attr String [1] moduleIdentifier;
 		
 }
@@ -111,14 +110,12 @@ class AwayContext extends ContextualElement {
 
 class AwaySolution extends SpinalElement{
 	ref Solution[1] pointsTo;
-	@gmf.label(label="moduleIdentifier")
 	attr String [1] moduleIdentifier;
 }
 
 
 class AwayGoal extends SpinalElement,InTheContextOfTargetElement {
 	ref Goal [1] pointsTo;
-	@gmf.label(label="moduleIdentifier")
 	attr String [1] moduleIdentifier;
 }
 	
@@ -143,7 +140,6 @@ class ContractModule extends Module {
 
 abstract class ModelElement {
 	attr String [1] identifier;
-	@gmf.label(label="description")
 	attr String [1] description;
 	val TaggedValue [*] containsAdditional;
 		
@@ -184,7 +180,6 @@ class Case {
 
 abstract class ModelElement {
   attr String identifier;
-  @gmf.label(label="description")
   attr String description;
   attr String content;
   val TaggedValue[*] isTagged;
