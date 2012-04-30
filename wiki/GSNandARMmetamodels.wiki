@@ -1,0 +1,16 @@
+#summary presentation of the GSN and ARM metamodels
+
+= Introduction =
+
+This section presents the GSN and ARM metamodels as they are used in *acedit*.
+
+
+= Definition of the metamodels =
+
+The graphical editors of *acedit* are based on the definition of GSN and ARM metamodels. For the definition of the metamodels the EMFatic language is used. 
+
+EMFatic is a language designed to support navigation and editing of Ecore models. EMFatic has a similar to Java syntax which helps to define metamodels in a textual form. A description about the EMFatic language and its elements can be found at: http://www.eclipse.org/epsilon/doc/articles/emfatic/
+
+= GSN metamodel in EMFatic =
+
+= ARM metamodel in EMFatic
