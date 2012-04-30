@@ -156,11 +156,11 @@ The integration of the tool is succeeding be using the org.eclipse.epsilon.ewl.e
 
 At runtime the user can use the tool by selecting the wizards submenu on a selected diagram element.  The below figure illustrates the result of the example EWL code explained in the previous section (Visibility). User presses right click on the desired element, selects the wizards submenu and in this case the option change visibility from Private to Public.
 
-http://acedit.googlecode.com/svn/acedit%20images/acedit+images/wizard+exampl.png
+http://acedit.googlecode.com/svn/acedit%20images/acedit%20images/wizard%20exampl.png
 
 The below figure shows the result of the above action. The attribute visibility of the goal element changed, which result in the visual effect of adding the public indicator symbol on the top right of the element.
 
-http://acedit.googlecode.com/svn/acedit%20images/acedit+images/wizard+example+result.png
+http://acedit.googlecode.com/svn/acedit%20images/wizard+example+result.png
 
 = Add your own wizards =
 
