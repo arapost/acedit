@@ -21,7 +21,7 @@ The update sites you will need to install the plugins are:
 ==Install the Assurance Case Argument Editor==
 
 The install the *acedit* tool through eclipse updates using the following update site: 
- * http://acedit.googlecode.com/svn/trunk/GSN.updatesite
+ * http://acedit.googlecode.com/svn/trunk/acedit.updatesite/
 
 =Create your first project=
 
