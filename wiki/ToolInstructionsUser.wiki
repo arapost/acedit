@@ -14,6 +14,9 @@ The [http://www.eclipse.org/epsilon/download/ Eclipse Distribution with Epsilon]
 The install the *acedit* tool through eclipse updates using the following update site: 
  * http://acedit.googlecode.com/svn/trunk/acedit.updatesite/
 
+You can find more information on how we use the eclipse update manager at the eclipse help website:
+ * http://help.eclipse.org/galileo/index.jsp?topic=/org.eclipse.platform.doc.user/tasks/tasks-34.htm
+
 =Create your first project=
 
 After you successfully have completed the installation, you must be able to create you first acedit project. Below are presented the steps you must follow in Eclipse:
