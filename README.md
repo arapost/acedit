@@ -3,9 +3,9 @@ Acedit is an Editor for Assurance Cases, Implementing the Goal Structuring Notat
 
 The editor implements the GSN standard as specified at www.goalstructuringnotation.info and the ARM standard available from sysa.omg.org
 
-Please read the installation manual (ToolInstructionsUser) in the Wiki.
+Please read the installation manual [Tool Instructions User](https://github.com/arapost/acedit/wiki/Tool-Instructions-User) in the Wiki.
 
-You can find the overview white paper in the downloads section.
+You can download the overview white paper [here](https://github.com/arapost/acedit/blob/master/Intro%20to%20ACEdit.pdf).
 
 Tool screenshots:
 
